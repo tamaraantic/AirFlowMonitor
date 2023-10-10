@@ -14,24 +14,32 @@ code {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Dvije kolone */
-  grid-template-rows: repeat(2, 1fr); /* Dvije reda */
-  gap: 0; /* Razmak između elemenata */
-  height: 100vh; /* Cijeli ekran */
+  grid-template-columns: repeat(2, 1fr); 
+  grid-template-rows: repeat(2, 1fr); 
+  gap: 0; 
+  height: 100vh; 
 }
 
-/* Stil za iframe elemente (grid stavke) */
 .grid-item {
-  width: 100%; /* Popunjavaju cijelu širinu kolone */
-  height: 100%; /* Popunjavaju cijelu visinu ekrana */
+  width: 100%; 
+  height: 100%; 
 }
 
 .nav-dropdown-inner {
   margin-left: 20px;
 }
 
+.nav-link{
+  margin-left: 25px;
+}
+
 .nav-dropdown-no-border .dropdown-menu {
   border: none !important;
   box-shadow: none !important;
   outline: none !important;
+}
+
+.choose-sensor-div{
+  margin-left: 5%;
+  width: 15%;
 }
