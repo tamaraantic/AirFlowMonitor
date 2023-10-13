@@ -1,5 +1,6 @@
 package Project.AirFlowMonitor.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,5 +15,6 @@ public class Employee {
     private String email;
 
     @ManyToOne
+    @JsonBackReference
     private Office office;
 }

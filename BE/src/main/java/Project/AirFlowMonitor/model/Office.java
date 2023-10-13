@@ -1,5 +1,6 @@
 package Project.AirFlowMonitor.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,6 +14,7 @@ public class Office {
     private double surface;
     private int capacity;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "office")
     private List<Employee> employees;
 
