@@ -23,10 +23,10 @@ public class OfficeController {
     @Autowired
     private final BuildingService buildingService;
 
-
     @GetMapping("/get-all")
     public List<Office> getAllOffices(){
-        return officeService.getAllOffices();
+        List<Office> offices = officeService.getAllOffices();
+        return offices;
     }
 
     @PostMapping("/create")

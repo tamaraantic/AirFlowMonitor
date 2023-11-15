@@ -5,6 +5,7 @@ import Project.AirFlowMonitor.model.Office;
 import Project.AirFlowMonitor.model.OfficeId;
 import Project.AirFlowMonitor.repository.OfficeRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +30,8 @@ public class OfficeService {
 
     @Transactional(readOnly = true)
     public List<Office> getAllOffices() {
-        return repo.findAll();
+        List<Office> offices = repo.findAll();
+        return offices;
     }
 
     public Office findById(OfficeId id){

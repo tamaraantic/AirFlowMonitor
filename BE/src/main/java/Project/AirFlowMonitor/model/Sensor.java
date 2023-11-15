@@ -12,6 +12,5 @@ public class Sensor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private SensorType type;
-    @OneToOne
-    private SensorOffice sensorOffice;
+
 }

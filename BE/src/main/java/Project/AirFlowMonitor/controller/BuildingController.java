@@ -1,5 +1,6 @@
 package Project.AirFlowMonitor.controller;
 
+import Project.AirFlowMonitor.InfluxDBConnection;
 import Project.AirFlowMonitor.dto.CreateBuildingRequest;
 import Project.AirFlowMonitor.model.Building;
 import Project.AirFlowMonitor.service.BuildingService;
@@ -17,10 +18,17 @@ import java.util.List;
 public class BuildingController {
     @Autowired
     private final BuildingService service;
+    @Autowired
+    private final InfluxDBConnection influxDBConnection;
 
     @GetMapping("/get-all")
     public List<Building> getAllBuildings(){
         return service.getAllBuildings();
+    }
+
+    @GetMapping("/create-check")
+    public void createCheck(){
+        influxDBConnection.createOrUpdateCheck();
     }
 
     @PostMapping("/create")
