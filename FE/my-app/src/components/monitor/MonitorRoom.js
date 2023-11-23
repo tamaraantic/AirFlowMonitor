@@ -7,7 +7,7 @@ function MonitorRoom() {
   const [selectedSensor, setSelectedSensor] = useState("temperature");
 
   const handleSensorChange = (e) => {
-    setSelectedSensor(e.target.value); // Ažurirajte odabranu opciju kad se promijeni
+    setSelectedSensor(e.target.value); 
   };
 
   const grafanaDashboardURL = "http://localhost:3000/d-solo/3225UmGIz/dinamic-dashboard?orgId=1";
@@ -43,7 +43,6 @@ function MonitorRoom() {
         height="300px%"
         title="Dashboard"
       ></iframe>
-      
     </div>
   );
 }

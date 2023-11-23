@@ -14,8 +14,6 @@ public class SensorOffice {
     private double optimal;
     @ManyToOne
     private Office office;
-    /*@ManyToOne
-    private SensorOffice sensorOffice;*/
     @ManyToOne
     private Sensor sensor;
 }

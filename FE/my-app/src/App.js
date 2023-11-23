@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MonitorBuilding from './components/monitor/MonitorBuilding';
 import MonitorRoom from './components/monitor/MonitorRoom';
 import Notifications from './components/Notifications';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (

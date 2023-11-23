@@ -61,7 +61,7 @@ function NavigationBar() {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                Air Flow Monitor
+              <Nav.Link as={Link} to="/">Air Flow Monitor</Nav.Link>
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
