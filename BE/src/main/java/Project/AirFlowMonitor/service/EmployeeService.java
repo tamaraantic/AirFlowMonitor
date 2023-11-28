@@ -29,5 +29,8 @@ public class EmployeeService {
     public Optional<Employee> findById(Long id){
         return repo.findById(id);
     }
+    public Employee findByEmail(String email){
+        return repo.findByEmail(email);
+    }
 
 }

@@ -9,6 +9,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import BASE_URL from '../../apiConfig'; 
 import '../../index.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 function NavigationBar() {
   const [offices, setOffices] = useState([]);
@@ -40,6 +41,22 @@ function NavigationBar() {
       });
   };
 
+  const alertAll = () => {
+    fetch(`${BASE_URL}/employee/alert-all`, {
+      method: 'POST', 
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }else{
+          toast.info("You have sent warning email to all employees!");
+        }
+      })
+      .catch((error) => {
+        console.error('Error while sending emails:', error);
+      });
+  };
+
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -53,6 +70,7 @@ function NavigationBar() {
       <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
         <Container fluid >
           <Navbar.Brand href="#">Air Flow Monitor</Navbar.Brand>
+          <Button variant="danger" className="me-auto" onClick={alertAll}>ALERT ALL</Button>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${expand}`}
@@ -146,7 +164,7 @@ function NavigationBar() {
               </Nav>
               
             </Offcanvas.Body>
-          </Navbar.Offcanvas>
+          </Navbar.Offcanvas>      
         </Container>
       </Navbar>
     </>

@@ -5,6 +5,7 @@ import Project.AirFlowMonitor.dto.GetEmployeeRequest;
 import Project.AirFlowMonitor.dto.Notification;
 import Project.AirFlowMonitor.dto.TextDTO;
 import Project.AirFlowMonitor.model.Employee;
+import Project.AirFlowMonitor.model.EmployeeType;
 import Project.AirFlowMonitor.model.InOutEvent;
 import Project.AirFlowMonitor.repository.InOutEventRepository;
 import Project.AirFlowMonitor.service.EmailService;
@@ -64,18 +65,6 @@ public class EmployeeController {
         employee.setOffice(officeService.findById(employeeRequest.getOfficeId()));
         return service.createEmployee(employee) ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
     }
-    @PostMapping("/info")
-    public String info(@RequestBody String info) throws Exception{
-        Notification notification= notificationService.parseNotification(info);
-        System.out.println(notification.toString());
-        TextDTO text = new TextDTO();
-        text.setMessage(notification.toString());
-        webSocketController.sendMessage(text);
-        //List<String> emails = getEmployeesEmails(getAllEmployesInside());
-        //emailService.sendMail("itcompanyns@gmail.com",emails.toArray(new String[0]), "SUBJECT", info);
-        return info;
-    }
-
     public List<Employee> getAllEmployesInside(){
         List<InOutEvent> inOutEvents = inOutEventRepository.getAllEmployeesInside();
         List<Employee> employeesInside= new ArrayList<>();
@@ -93,6 +82,89 @@ public class EmployeeController {
         return  emails;
     }
 
+    @PostMapping("/info")
+    public String alertHandler(@RequestBody String info) throws Exception{
+        Notification notification= notificationService.parseNotification(info);
+        System.out.println(notification.toString());
+        sendNotification(notification);
+        //sendEmail(notification);
+        return info;
+    }
+//PREBACI U NOTIFICATION SERVICE/KONTROLER
+    public void sendNotification(Notification notification){
+        TextDTO popUp = new TextDTO();
+        popUp.setMessage(notification.toString());
+        webSocketController.sendMessage(popUp);
+    }
+    public void sendEmail(Notification notification){
+        List<String> emails = getEmployeesEmails(getAllEmployesInside());
+        List<String> filteredEmails = filterEmails(emails, notification);
+        emailService.sendMail("itcompanyns@gmail.com",filteredEmails.toArray(new String[0]), "HITNO!", formEmail(notification));
+    }
+
+    public List<String> filterEmails(List<String> emails, Notification notification) {
+        List<String> filteredEmails = new ArrayList<>();
+
+        for (String employeeEmail : emails) {
+            Employee employee = service.findByEmail(employeeEmail);
+
+            if (isMaintenanceWorker(employee) || isMatchingOffice(employee, notification)) {
+                filteredEmails.add(employeeEmail);
+            }
+        }
+
+        return filteredEmails;
+    }
+
+    private boolean isMaintenanceWorker(Employee employee) {
+        return employee.getType() == EmployeeType.MAINTENANCE_WORKER;
+    }
+
+    private boolean isMatchingOffice(Employee employee, Notification notification) {
+        String officeId = employee.getOffice().getId().getOfficeId();
+
+        if ("crit".equals(notification.getLevel())) {
+            return isMaintenanceWorker(employee) || officeId.substring(0, 5).equals(notification.getCheckName().substring(0, 5));
+        } else if ("warn".equals(notification.getLevel())) {
+            return isMaintenanceWorker(employee) || officeId.equals(notification.getCheckName());
+        }
+
+        return false;
+    }
+
+    @PostMapping("/alert-all")
+    public void alertAll(Notification notification){
+        List<String> emails = getEmployeesEmails(getAllEmployesInside());
+        emailService.sendMail("itcompanyns@gmail.com",emails.toArray(new String[0]), "ODMAH NAPUSTITE ZGRADU!", formAlertEmail(notification));
+    }
+
+    public String formAlertEmail(Notification notification){
+        String email =   "Poštovani,\n" +
+                "\n" +
+                "ODMAH NAPUSTITE ZGRADU!\n" +
+                "\n" +
+                "S poštovanjem,\n" +
+                "Antic Systems";
+        return email;
+    }
+
+    public String formEmail(Notification notification){
+        String email =   "Poštovani,\n" +
+                "\n" +
+                "Želimo vas obavijestiti da je senzor u sobi izmjerio neobično visoku vrijednost. Evo detalja:\n" +
+                "\n" +
+                "Soba: "+ notification.getCheckName()+"\n" +
+                "Vrijednost senzora: "+ notification.getValue()+"\n" +
+                "Vrijeme mjerenja: "+notification.getTime()+"\n" +
+                "\n" +
+                "Molimo vas da odmah napustite prostorije i provjerite situaciju. Ako primijetite nešto neobično ili imate dodatna pitanja, obratite se portiru.\n" +
+                "\n" +
+                "Hvala vam na suradnji.\n" +
+                "\n" +
+                "S poštovanjem,\n" +
+                "Antic Systems";
+        return email;
+    }
 
 
 }

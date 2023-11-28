@@ -40,9 +40,9 @@ public class InfluxDBConnection {
                 String officeNumber= officeId.substring(officeId.length()-3);
                 String sensor= sensorOffice.getSensor().getType().name().toLowerCase();
 
-                if (!officeId.equals("TLM0100")){
+                /*if (!officeId.equals("TLM0100")){
                     continue;
-                }
+                }*/
 
                 List<Threshold> thresholds = new ArrayList<>();
 
