@@ -15,12 +15,7 @@ public class Office {
     private OfficeId id;
     private double surface;
     private int capacity;
-
-    //@JsonManagedReference
     @OneToMany(mappedBy = "office")
     private List<Employee> employees;
 
-    //@JsonManagedReference
-    @OneToMany(mappedBy = "office")
-    private List<SensorOffice> sensorOffices;
 }

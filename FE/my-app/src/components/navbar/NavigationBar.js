@@ -47,6 +47,7 @@ function NavigationBar() {
     })
       .then((response) => {
         if (!response.ok) {
+          toast.error("Network error. Emails were not sent!")
           throw new Error('Network response was not ok');
         }else{
           toast.info("You have sent warning email to all employees!");
@@ -79,7 +80,7 @@ function NavigationBar() {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-              <Nav.Link as={Link} to="/">Air Flow Monitor</Nav.Link>
+              <Nav.Link as={Link} to="/notifications">Notifications</Nav.Link>
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
@@ -88,7 +89,7 @@ function NavigationBar() {
                   title="Monitor"
                   id={`offcanvasNavbarDropdown-expand-${expand}`}
                 >
-                  <Nav.Link as={Link} to="/air-sensor">Monitor Building</Nav.Link>
+                  <Nav.Link as={Link} to="/">Monitor Building</Nav.Link>
                   <NavDropdown.Divider />
                   <NavDropdown
                     title="Monitor Office"
@@ -138,7 +139,7 @@ function NavigationBar() {
                     className="nav-dropdown-no-border"
                   >
                     <NavDropdown.Item className="nav-dropdown-inner">
-                      Add Office
+                      <Nav.Link as={Link} to="/office/create">Add Office</Nav.Link>
                     </NavDropdown.Item>
                     <NavDropdown.Item className="nav-dropdown-inner">
                       Remove Office

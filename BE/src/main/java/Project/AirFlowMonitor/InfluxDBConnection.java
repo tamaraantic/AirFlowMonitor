@@ -1,7 +1,9 @@
 package Project.AirFlowMonitor;
 
-import Project.AirFlowMonitor.model.SensorOffice;
+import Project.AirFlowMonitor.model.Sensor;
+import Project.AirFlowMonitor.model.Installation;
 import Project.AirFlowMonitor.repository.SensorOfficeRepository;
+import Project.AirFlowMonitor.repository.SensorRepository;
 import com.influxdb.client.*;
 import com.influxdb.client.domain.*;
 import lombok.Data;
@@ -11,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Configuration
 @Data
@@ -29,33 +30,32 @@ public class InfluxDBConnection {
 
     @Autowired
     private SensorOfficeRepository sensorOfficeRepository;
+    @Autowired
+    private SensorRepository sensorRepository;
 
     public void createOrUpdateCheck() {
             InfluxDBClient client = buildConnection();
             QueryApi queryApi = client.getQueryApi();
             ChecksApi checksApi = client.getChecksApi();
+            List<Installation> ss= sensorOfficeRepository.findAll();
 
-            for (SensorOffice sensorOffice: sensorOfficeRepository.findAll()) {
-                String officeId = sensorOffice.getOffice().getId().getOfficeId();
-                String officeNumber= officeId.substring(officeId.length()-3);
-                String sensor= sensorOffice.getSensor().getType().name().toLowerCase();
-
-                /*if (!officeId.equals("TLM0100")){
-                    continue;
-                }*/
+            for (Installation installation : sensorOfficeRepository.findAll()) {
+                String officeId = installation.getOffice().getId().getOfficeId();
+                Sensor sensor = sensorRepository.findById(installation.getSensor().getId()).orElseThrow(() -> new RuntimeException("Senzor nije pronađen za ID: " + installation.getSensor().getId()));
+                String sensorName= sensor.getSensorType().getName().name().toLowerCase();
 
                 List<Threshold> thresholds = new ArrayList<>();
 
                 //critical condition
                 GreaterThreshold crit = new GreaterThreshold();
                 crit.setLevel(CheckStatusLevel.CRIT);
-                crit.setValue((float) sensorOffice.getMaximal());
+                crit.setValue((float) sensor.getSensorType().getMaximal());
                 thresholds.add(crit);
 
                 //warn condition
                 LesserThreshold warn = new LesserThreshold();
                 warn.setLevel(CheckStatusLevel.WARN);
-                warn.setValue((float) sensorOffice.getMinimal());
+                warn.setValue((float) sensor.getSensorType().getMinimal());
                 thresholds.add(warn);
 
                 String fluxQuery =
@@ -63,7 +63,7 @@ public class InfluxDBConnection {
                                 "    from(bucket: \"airSensor-RT\")\n" +
                                 "        |> range(start: -1m)\n" +
                                 "        |> filter(fn: (r) => r[\"_measurement\"] == \"airSensors\")\n" +
-                                "        |> filter(fn: (r) => r[\"_field\"] == \"" + sensor + "\")\n" +
+                                "        |> filter(fn: (r) => r[\"_field\"] == \"" + sensorName + "\")\n" +
                                 "        |> filter(fn: (r) => r[\"sensor_id\"] == \"" + officeId + "\")\n" +
                                 "        |> aggregateWindow(every: 1m, fn: last, createEmpty: false)\n";
 
@@ -73,7 +73,7 @@ public class InfluxDBConnection {
                 thresholdCheck.setQuery(query);
                 thresholdCheck.setOrgID("0a0a50622ace9576");
                 thresholdCheck.setStatus(TaskStatusType.ACTIVE);
-                thresholdCheck.setName(officeId+ ", " + sensor);
+                thresholdCheck.setName(officeId+ ", " + sensorName);
                 thresholdCheck.setEvery("1m");
                 thresholdCheck.setThresholds(thresholds);
                 thresholdCheck.setDescription("Current readings are out of the expected range! RUN!");
@@ -82,7 +82,7 @@ public class InfluxDBConnection {
                 ThresholdCheck existingCheck= new ThresholdCheck();
                 boolean isCreated = false;
                 for (Check check : existingChecks) {
-                    if (check.getName().equals(officeId+ ", " + sensor)) {
+                    if (check.getName().equals(officeId+ ", " + sensorName)) {
                         existingCheck= (ThresholdCheck) check;
                         isCreated=true;
                     }

@@ -99,7 +99,7 @@ public class EmployeeController {
     public void sendEmail(Notification notification){
         List<String> emails = getEmployeesEmails(getAllEmployesInside());
         List<String> filteredEmails = filterEmails(emails, notification);
-        emailService.sendMail("itcompanyns@gmail.com",filteredEmails.toArray(new String[0]), "HITNO!", formEmail(notification));
+        emailService.sendMail("itcompanyns@gmail.com",filteredEmails.toArray(new String[0]), "URGENT!", formEmail(notification));
     }
 
     public List<String> filterEmails(List<String> emails, Notification notification) {
@@ -135,35 +135,37 @@ public class EmployeeController {
     @PostMapping("/alert-all")
     public void alertAll(Notification notification){
         List<String> emails = getEmployeesEmails(getAllEmployesInside());
-        emailService.sendMail("itcompanyns@gmail.com",emails.toArray(new String[0]), "ODMAH NAPUSTITE ZGRADU!", formAlertEmail(notification));
+        emailService.sendMail("itcompanyns@gmail.com",emails.toArray(new String[0]), "IMMEDIATELY EVACUATE THE BUILDING!", formAlertEmail(notification));
     }
 
     public String formAlertEmail(Notification notification){
-        String email =   "Poštovani,\n" +
+        String email =   "Dear Sir/Madam,\n" +
                 "\n" +
-                "ODMAH NAPUSTITE ZGRADU!\n" +
+                "IMMEDIATELY EVACUATE THE BUILDING!\n" +
                 "\n" +
-                "S poštovanjem,\n" +
+                "Sincerely,\n" +
                 "Antic Systems";
         return email;
     }
 
+
     public String formEmail(Notification notification){
-        String email =   "Poštovani,\n" +
+        String email =   "Dear Sir/Madam,\n" +
                 "\n" +
-                "Želimo vas obavijestiti da je senzor u sobi izmjerio neobično visoku vrijednost. Evo detalja:\n" +
+                "We would like to inform you that the sensor in the room has detected an unusually high value. Here are the details:\n" +
                 "\n" +
-                "Soba: "+ notification.getCheckName()+"\n" +
-                "Vrijednost senzora: "+ notification.getValue()+"\n" +
-                "Vrijeme mjerenja: "+notification.getTime()+"\n" +
+                "Office: "+ notification.getCheckName()+"\n" +
+                "Sensor value: "+ notification.getValue()+"\n" +
+                "Measurement time: "+notification.getTime()+"\n" +
                 "\n" +
-                "Molimo vas da odmah napustite prostorije i provjerite situaciju. Ako primijetite nešto neobično ili imate dodatna pitanja, obratite se portiru.\n" +
+                "Please evacuate the premises immediately and assess the situation. If you notice anything unusual or have additional questions, please contact the concierge.\n" +
                 "\n" +
-                "Hvala vam na suradnji.\n" +
+                "Thank you for your cooperation.\n" +
                 "\n" +
-                "S poštovanjem,\n" +
+                "Sincerely,\n" +
                 "Antic Systems";
         return email;
+
     }
 
 

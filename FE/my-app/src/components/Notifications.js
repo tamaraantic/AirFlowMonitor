@@ -1,90 +1,79 @@
-import React, { useState } from 'react';
-import SockJsClient from 'react-stomp';
+import React, { useState, useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
-import { useToast } from '../ToastProvider';
 
-
-const SOCKET_URL = 'http://localhost:8081/ws-message';
-
-const Notifications = () => {
+const Notifications = (props) => {
   const [messages, setMessages] = useState([]);
   
-
-  let onConnected = () => {
-    console.log("Connected!!");
-  }
-
-  let onMessageReceived = (msg) => {
-    const regex = /checkName=(\w+), temperature, time=(.*), level=(\w+), value=(\d+\.\d+)/;
-    const match = msg.message.match(regex);
+  useEffect(() => {
+    if (props.notifications) {
+      // Sortiranje poruka po vremenu
+      const sortedMessages = props.notifications
+        .slice() // Kopiranje niza kako bismo izbjegli mijenjanje originalnog niza
+        .sort((a, b) => {
+          const timeA = getTimeFromNotification(a);
+          const timeB = getTimeFromNotification(b);
+          return new Date(timeB) - new Date(timeA);
+        })
+        .reverse();
   
-    if (match) {
-      const [, checkName, time, level, rawValue] = match;
-      const formattedValue = Number(rawValue).toFixed(2); 
-      const timeInCET = new Date(time); 
-      const options = { timeZone: 'Europe/Belgrade', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' };
-      const formattedTime = timeInCET.toLocaleString('en-US', options); 
-      const parsedMessage = `CheckName:${checkName}, FormattedValue: ${formattedValue}, Time: ${formattedTime}, Level: ${level}`;
-  
-      setMessages(prevMessages => [...prevMessages, parsedMessage]);
-
-      if (level === 'crit') {
-        toast.error(`Dangerously high value ${formattedValue} have been recorded in ${checkName}, at ${formattedTime}!`);
-      
-      }
-      else if (level === 'warn') {
-        toast.warn(`Dangerously high value ${formattedValue} have been recorded in ${checkName}, at ${formattedTime}!`);
-      }else if (level === 'ok'){
-        toast.info(`Current recorded value in ${checkName}, at ${formattedTime} is ${formattedValue}`);
-      }else{
-        toast.info(`Current recorded value in ${checkName}, at ${formattedTime} is ${formattedValue}`);
-      }
-    } else {
-      setMessages(prevMessages => [...prevMessages, msg.message]);
+      // Postavljanje ažuriranih poruka u lokalnu varijablu
+      setMessages(sortedMessages);
     }
+  }, [props.notifications]);
+  
+  // Ova varijabla će sadržavati ažurirane poruke
+  const updatedMessages = messages;
+
+  const getTimeFromNotification = (notification) => {
+    const timeRegex = /Time:\s+(\d{2}:\d{2}:\d{2})/;
+    const match = timeRegex.exec(notification);
+    const time = match ? match[1] : '';
+  
+    return time;
   };
 
   return (
     <div>
-      <h2><b>Welcome to Monitoring Sistem!</b></h2>
-      <h3><i>NOTIFICATIONS:</i></h3>
-
-  <div className="container mt-5">
+    <h2><b>Welcome to Monitoring Sistem!</b></h2>
+    <h3><i>NOTIFICATIONS:</i></h3>
     <table className="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>Office</th>
-        <th>Value</th>
-        <th>Time</th>
-        <th>Level</th>
-      </tr>
-    </thead>
-    <tbody>
-      {messages.map((message, index) => {
-        const regex = /CheckName:(.*?), FormattedValue: (.*?), Time: (.*?), Level: (.*)/;
-        const match = message.match(regex);
+      <thead>
+        <tr>
+          <th>Check Name</th>
+          <th>Formatted Value</th>
+          <th>Time</th>
+          <th>Level</th>
+        </tr>
+      </thead>
+      <tbody>
+        {updatedMessages.map((message, index) => {
+        
+          const messageString = typeof message === 'string' && message.endsWith(';') ? message : message.toString();
 
-        if (match) {
-          const [, checkName, formattedValue, time, level] = match;
-          return (
-            <tr key={index} className="message-row">
-              <td className="message-data">{checkName}</td>
-              <td className="message-data">{formattedValue}</td>
-              <td className="message-data">{time}</td>
-              <td className="message-data">{level}</td>
-            </tr>
-          );
-        } else {
-          return null;
-        }
-      })}
-    </tbody>
-  </table>
-</div>
+          const parts = messageString.split(',').map(part => part.trim());
+          const checkName = parts.find(part => part.includes('CheckName'))?.split(':')[1]?.trim() || '';
+          const formattedValue = parts.find(part => part.includes('FormattedValue'))?.split(':')[1]?.trim() || '';
+          const timeIndex = parts.findIndex(part => part.includes('Time'));
+          const time = timeIndex !== -1 ? parts[timeIndex].substring(parts[timeIndex].indexOf(':') + 1).trim() : '';      
+          const level = (parts.find(part => part.includes('Level'))?.split(':')[1]?.trim() || '').replace(/;$/, '');
 
-    </div>
-  );
+          if (checkName && formattedValue && time && level) {
+            return (
+              <tr key={index}>
+                <td>{checkName}</td>
+                <td>{formattedValue}</td>
+                <td>{time}</td>
+                <td>{level}</td>
+              </tr>
+            );
+          } else {
+            return null;
+          }
+        })}
+      </tbody>
+    </table>
+  </div>
+);
 }
 
 export default Notifications;
