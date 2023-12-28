@@ -29,17 +29,44 @@ public class OfficeController {
         return offices;
     }
 
+    @GetMapping("/get-all/{buildingId}")
+    public List<Office> getAllOfficesInBuilding(@PathVariable Long buildingId){
+        List<Office> officesInBuilding = officeService.getAllOfficesInBuilding(buildingId);
+        return officesInBuilding;
+    }
+
     @PostMapping("/create")
     public ResponseEntity<Office> createOffice(@RequestBody CreateOfficeRequest createOfficeRequest) {
-        Office office = new Office();
-        OfficeId officeId = new OfficeId();
-        officeId.setBuildingId(createOfficeRequest.getId().getBuildingId());
-        officeId.setOfficeId(createOfficeRequest.getId().getOfficeId());
-        office.setId(officeId);
-        office.setSurface(createOfficeRequest.getSurface());
-        office.setCapacity(createOfficeRequest.getCapacity());
-        Optional<Building> optionalBuilding = buildingService.findById(officeId.getBuildingId());
+        Office office = Office.builder()
+                .id(createOfficeRequest.getId())
+                .surface(createOfficeRequest.getSurface())
+                .capacity(createOfficeRequest.getCapacity())
+                .build();
+        Optional<Building> optionalBuilding = buildingService.findById(office.getId().getBuildingId());
 
         return officeService.createOffice(office) ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
+    }
+
+    @DeleteMapping("/delete/{buildingId}/{officeId}")
+    public ResponseEntity<String> deleteOffice(@PathVariable String officeId, @PathVariable Long buildingId) {
+        OfficeId id= new OfficeId();
+        id.setOfficeId(officeId);
+        id.setBuildingId(buildingId);
+        officeService.deleteOffice(id);
+        return ResponseEntity.ok("Office deleted successfully");
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<String> updateOffice(@RequestBody CreateOfficeRequest updatedOffice) {
+        Office office= officeService.findById(updatedOffice.getId());
+
+        Office newOffice = Office.builder()
+                .id(updatedOffice.getId())
+                .surface(updatedOffice.getSurface())
+                .capacity(updatedOffice.getCapacity())
+                .employees(office.getEmployees())
+                .build();
+        officeService.updateOffice(newOffice);
+        return ResponseEntity.ok("Office updated successfully");
     }
 }

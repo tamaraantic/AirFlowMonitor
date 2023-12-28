@@ -1,7 +1,10 @@
 package Project.AirFlowMonitor.service;
 
 import Project.AirFlowMonitor.model.Employee;
+import Project.AirFlowMonitor.model.Office;
+import Project.AirFlowMonitor.model.OfficeId;
 import Project.AirFlowMonitor.repository.EmployeeRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -31,6 +34,18 @@ public class EmployeeService {
     }
     public Employee findByEmail(String email){
         return repo.findByEmail(email);
+    }
+    @Transactional
+    public void deleteEmployee(String email) {
+        repo.deleteByEmail(email);
+    }
+
+    public void updateEmployee(Employee updatedEmployee) {
+        if (repo.existsById(updatedEmployee.getId())) {
+            repo.save(updatedEmployee);
+        } else {
+            throw new EntityNotFoundException("Employee not found with id: " + updatedEmployee.getId());
+        }
     }
 
 }

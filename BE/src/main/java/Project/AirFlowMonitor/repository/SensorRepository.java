@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface SensorRepository extends JpaRepository<Sensor, Long> {
     Optional<Sensor> findById(Long id);
+
+    Optional<Object> findBySerialNum(Long id);
 }

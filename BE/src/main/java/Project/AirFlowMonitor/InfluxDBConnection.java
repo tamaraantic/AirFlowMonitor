@@ -2,7 +2,7 @@ package Project.AirFlowMonitor;
 
 import Project.AirFlowMonitor.model.Sensor;
 import Project.AirFlowMonitor.model.Installation;
-import Project.AirFlowMonitor.repository.SensorOfficeRepository;
+import Project.AirFlowMonitor.repository.InstallationRepository;
 import Project.AirFlowMonitor.repository.SensorRepository;
 import com.influxdb.client.*;
 import com.influxdb.client.domain.*;
@@ -29,7 +29,7 @@ public class InfluxDBConnection {
     }
 
     @Autowired
-    private SensorOfficeRepository sensorOfficeRepository;
+    private InstallationRepository installationRepository;
     @Autowired
     private SensorRepository sensorRepository;
 
@@ -37,9 +37,9 @@ public class InfluxDBConnection {
             InfluxDBClient client = buildConnection();
             QueryApi queryApi = client.getQueryApi();
             ChecksApi checksApi = client.getChecksApi();
-            List<Installation> ss= sensorOfficeRepository.findAll();
+            List<Installation> ss= installationRepository.findAll();
 
-            for (Installation installation : sensorOfficeRepository.findAll()) {
+            for (Installation installation : installationRepository.findAll()) {
                 String officeId = installation.getOffice().getId().getOfficeId();
                 Sensor sensor = sensorRepository.findById(installation.getSensor().getId()).orElseThrow(() -> new RuntimeException("Senzor nije pronađen za ID: " + installation.getSensor().getId()));
                 String sensorName= sensor.getSensorType().getName().name().toLowerCase();

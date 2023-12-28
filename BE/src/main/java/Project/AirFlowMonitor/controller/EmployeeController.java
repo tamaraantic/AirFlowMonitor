@@ -1,18 +1,14 @@
 package Project.AirFlowMonitor.controller;
 
-import Project.AirFlowMonitor.dto.CreateEmployeeRequest;
-import Project.AirFlowMonitor.dto.GetEmployeeRequest;
-import Project.AirFlowMonitor.dto.Notification;
-import Project.AirFlowMonitor.dto.TextDTO;
-import Project.AirFlowMonitor.model.Employee;
-import Project.AirFlowMonitor.model.EmployeeType;
-import Project.AirFlowMonitor.model.InOutEvent;
+import Project.AirFlowMonitor.dto.*;
+import Project.AirFlowMonitor.model.*;
 import Project.AirFlowMonitor.repository.InOutEventRepository;
 import Project.AirFlowMonitor.service.EmailService;
 import Project.AirFlowMonitor.service.EmployeeService;
 
 import Project.AirFlowMonitor.service.NotificationService;
 import Project.AirFlowMonitor.service.OfficeService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,13 +54,7 @@ public class EmployeeController {
                 .collect(Collectors.toList());
         return dtoList;
     }
-    @PostMapping("/create")
-    public ResponseEntity<Employee> createEmployee(@RequestBody CreateEmployeeRequest employeeRequest) {
-        Employee employee = new Employee();
-        BeanUtils.copyProperties(employeeRequest, employee);
-        employee.setOffice(officeService.findById(employeeRequest.getOfficeId()));
-        return service.createEmployee(employee) ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
-    }
+
     public List<Employee> getAllEmployesInside(){
         List<InOutEvent> inOutEvents = inOutEventRepository.getAllEmployeesInside();
         List<Employee> employeesInside= new ArrayList<>();
@@ -80,6 +70,29 @@ public class EmployeeController {
             emails.add(employee.getEmail());
         }
         return  emails;
+    }
+
+    @DeleteMapping("delete/{employeeEmail}")
+    public ResponseEntity<String> deleteEmployee( @PathVariable String employeeEmail) {
+        service.deleteEmployee(employeeEmail);
+        return ResponseEntity.ok("Employee deleted successfully");
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<String> updateOffice(@RequestBody UpdateEmployeeRequest updateEmployee) {
+        Employee employee= service.findByEmail(updateEmployee.getEmail());
+
+        Employee newEmployee = Employee.builder()
+                .id(employee.getId())
+                .name(updateEmployee.getFirstname())
+                .surname(updateEmployee.getLastname())
+                .email(updateEmployee.getEmail())
+                .password(employee.getPassword())
+                .role(updateEmployee.getRole())
+                .office(employee.getOffice())
+                .build();
+        service.updateEmployee(newEmployee);
+        return ResponseEntity.ok("Employee updated successfully");
     }
 
     @PostMapping("/info")
@@ -117,7 +130,7 @@ public class EmployeeController {
     }
 
     private boolean isMaintenanceWorker(Employee employee) {
-        return employee.getType() == EmployeeType.MAINTENANCE_WORKER;
+        return employee.getRole() == Role.SECURITY;
     }
 
     private boolean isMatchingOffice(Employee employee, Notification notification) {

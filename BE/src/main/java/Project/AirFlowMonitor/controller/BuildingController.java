@@ -20,9 +20,10 @@ public class BuildingController {
     private final BuildingService service;
     @Autowired
     private final InfluxDBConnection influxDBConnection;
-
+    @CrossOrigin
     @GetMapping("/get-all")
     public List<Building> getAllBuildings(){
+        System.out.println("Usao u Get All");
         return service.getAllBuildings();
     }
 
