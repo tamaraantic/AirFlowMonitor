@@ -1,5 +1,6 @@
 package Project.AirFlowMonitor.controller;
 
+import Project.AirFlowMonitor.InfluxDBConnection;
 import Project.AirFlowMonitor.dto.CreateOfficeRequest;
 import Project.AirFlowMonitor.dto.GetInstallationRequest;
 import Project.AirFlowMonitor.model.*;
@@ -11,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,6 +30,8 @@ public class InstallationController {
     private final OfficeService officeService;
     @Autowired
     private final SensorService sensorService;
+    @Autowired
+    private final InfluxDBConnection influxDBConnection;
 
     @GetMapping("/get-all")
     public List<GetInstallationRequest> getAllOffices(){
@@ -51,6 +56,16 @@ public class InstallationController {
         return ResponseEntity.ok("Installation deleted successfully");
     }
 
+    @DeleteMapping("/remove/{id}")
+    public ResponseEntity<String> removeInstallation(@PathVariable Long id) throws IOException, InterruptedException {
+        Installation installation = installationService.findById(id);
+        installation.setDateOfRemoval(LocalDateTime.now());
+        installationService.updateInstallation(installation);
+        String checkName= installation.getOffice().getId().getOfficeId() + ", " + installation.getSensor().getSensorType().getName().toString().toLowerCase();
+        influxDBConnection.deleteCheckByName(checkName);
+        return ResponseEntity.ok("Installation removed successfully");
+    }
+
     @PostMapping("/create")
     public ResponseEntity<Office> createInstallation(@RequestBody GetInstallationRequest getInstallationRequest) {
         OfficeId officeId = OfficeId.builder()
@@ -72,7 +87,7 @@ public class InstallationController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<String> updateInstallation(@RequestBody GetInstallationRequest getInstallationRequest){
+    public ResponseEntity<String> updateInstallation(@RequestBody GetInstallationRequest getInstallationRequest) throws IOException, InterruptedException {
         Installation installation = installationService.findById(getInstallationRequest.getId());
 
         SensorType newSensorType= SensorType.builder()
@@ -96,17 +111,28 @@ public class InstallationController {
                 .sensor(newSensor)
                 .office(installation.getOffice())
                 .build();
-
         installationService.updateInstallation(newInstallation);
+        //ako je sensor uklonjen obrisi influx check
+        if (getInstallationRequest.getDateOfRemoval() != null){
+            String checkName= getInstallationRequest.getName() + ", " + installation.getSensor().getSensorType().getName().toString().toLowerCase();
+            influxDBConnection.deleteCheckByName(checkName);
+            return ResponseEntity.ok("Installation updated successfully");
+        }
+
+        return ResponseEntity.ok("Installation updated successfully");
+    }
+
+    @PutMapping("/update/t")
+    public ResponseEntity<String> updateInstallation(@RequestBody KSJDFHLKSJDFHSL ksjdfhlksjdfhsl){
+
         return ResponseEntity.ok("Installation updated successfully");
     }
 
     @GetMapping("find-by/{buildingId}/{officeId}/{sensorName}")
     public ResponseEntity<String> getSecondsFromInstallation(@PathVariable Long buildingId, @PathVariable String officeId,@PathVariable String sensorName ){
-        System.out.println("joj kuku");
         List<Installation> installations = installationService.findInstallationBySensorNameAndOffice(buildingId,officeId, SensorName.valueOf(sensorName));
         Installation installation = installations.stream().findFirst().orElse(null);
-        if (installation == null){
+        if (installation == null || installation.getDateOfRemoval() != null){
             return ResponseEntity.ok("0");
         }
         LocalDateTime now = LocalDateTime.now();
@@ -115,4 +141,6 @@ public class InstallationController {
         long seconds = duration.getSeconds();
         return ResponseEntity.ok(String.valueOf(seconds));
     }
+
+    
 }

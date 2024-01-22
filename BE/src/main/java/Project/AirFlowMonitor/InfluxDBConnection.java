@@ -11,8 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Configuration
 @Data
@@ -25,7 +32,7 @@ public class InfluxDBConnection {
 
     @Bean
     public InfluxDBClient buildConnection() {
-        return InfluxDBClientFactory.create(getUrl(), getToken().toCharArray(), getOrg(), getBucket());
+        return InfluxDBClientFactory.create(getUrl(), getToken().toCharArray(), getOrg(), getAirSensorBucket());
     }
 
     @Autowired
@@ -33,13 +40,54 @@ public class InfluxDBConnection {
     @Autowired
     private SensorRepository sensorRepository;
 
+    public void deleteCheckByName(String checkName) throws IOException, InterruptedException {
+        //try (InfluxDBClient client = buildConnection()) {
+            InfluxDBClient client = buildConnection();
+            ChecksApi checksApi = client.getChecksApi();
+            List<Check> existingChecks = checksApi.findChecks("0a0a50622ace9576");
+
+            // Pronađi check po imenu
+            Optional<Check> checkToDelete = existingChecks.stream()
+                    .filter(check -> check.getName().equals(checkName))
+                    .findFirst();
+
+            if (!checkToDelete.isPresent()){
+                return;
+            }
+
+            // Pronađi sve check-ove
+            String orgId = "0a0a50622ace9576";
+            String deleteUrl = "http://localhost:8086" + "/api/v2/checks/" + checkToDelete.get().getId() + "?orgID=" + orgId;
+            String deleteCheckToken="482dVubThiOToUIjItA-TzbE5V-u7LE2tsSXUMhUKjCBfkPwCV-Bfja-XKoCZWl-p74Kjo1ClgPGkg0-dSZCxQ==";
+
+                HttpRequest deleteRequest = HttpRequest.newBuilder()
+                        .uri(URI.create(deleteUrl))
+                        .header("Authorization", "Token " + deleteCheckToken)
+                        .DELETE()
+                        .build();
+
+                HttpResponse<String> response = HttpClient.newHttpClient().send(deleteRequest, HttpResponse.BodyHandlers.ofString());
+
+                if (response.statusCode() == 204) {
+                    System.out.println("Check uspešno obrisan.");
+                } else {
+                    System.err.println("Neuspešno brisanje check-a. HTTP Status Code: " + response.statusCode());
+                }
+
+
+    }
+
+
     public void createOrUpdateCheck() {
             InfluxDBClient client = buildConnection();
             QueryApi queryApi = client.getQueryApi();
             ChecksApi checksApi = client.getChecksApi();
-            List<Installation> ss= installationRepository.findAll();
+            List<Installation> filteredInstallations = installationRepository.findAll()
+                    .stream()
+                    .filter(installation -> installation.getDateOfRemoval()==null)
+                    .collect(Collectors.toList());
 
-            for (Installation installation : installationRepository.findAll()) {
+            for (Installation installation : filteredInstallations) {
                 String officeId = installation.getOffice().getId().getOfficeId();
                 Sensor sensor = sensorRepository.findById(installation.getSensor().getId()).orElseThrow(() -> new RuntimeException("Senzor nije pronađen za ID: " + installation.getSensor().getId()));
                 String sensorName= sensor.getSensorType().getName().name().toLowerCase();

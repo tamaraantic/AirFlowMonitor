@@ -17,7 +17,9 @@ import ViewEmployees from "./components/employee/ViewEmployees";
 import ViewSensorTypes from "./components/sensorType/ViewSensorTypes";
 import CreateSensorType from "./components/sensorType/CreateSensorType";
 import ViewInstallation from "./components/installation/ViewInstallations";
-import CreateInstallation from "./components/installation/CreateInstallation"
+import CreateInstallation from "./components/installation/CreateInstallation";
+import CreateSensor from "./components/sensor/CreateSensor";
+import ViewSensor from "./components/sensor/ViewSensor";
 
 const SOCKET_URL = "http://localhost:8081/ws-message";
 
@@ -44,6 +46,7 @@ function App() {
   };
 
   let onMessageReceived = (msg) => {
+    console.log("Poruka je primljena:", msg)
     const regex =
       /checkName=(\w+), temperature, time=(.*), level=(\w+), value=(\d+\.\d+)/;
     const match = msg.message.match(regex);
@@ -117,6 +120,8 @@ function App() {
           <Route path="/sensor-type/create" element={<CreateSensorType />} />
           <Route path="/installation/view-all" element={<ViewInstallation />} />
           <Route path="/installation/create" element={<CreateInstallation />} />
+          <Route path="/sensor/create" element={<CreateSensor />} />
+          <Route path="/sensor/view-all" element={<ViewSensor />} />
         </Routes>
       </div>
     );

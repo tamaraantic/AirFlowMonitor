@@ -2,6 +2,7 @@ import { Form, Button, FormGroup, Nav } from "react-bootstrap";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import BASE_URL from "../apiConfig";
+import "../index.css";
 
 const Login = ({ setToken }) => {
   const [username, setUserName] = useState();
@@ -41,22 +42,34 @@ const Login = ({ setToken }) => {
   }
 
   return (
-    <div>
+    <div class="login-wrapper">
       <Form className="monitor-container" onSubmit={handleSubmit}>
-        <h2>Log In</h2>
+        <h2 class="form-signin-heading">Please Log In</h2>
         <FormGroup>
-          <Form.Label>Username</Form.Label>
-          <input type="text" onChange={(e) => setUserName(e.target.value)} />
+          <Form.Label>Email</Form.Label>
+          <input
+            class="form-control"
+            name="username"
+            placeholder="Email Address"
+            required="true"
+            autofocus="true"
+            type="email"
+            onChange={(e) => setUserName(e.target.value)}
+          />
         </FormGroup>
         <FormGroup>
           <Form.Label>Password</Form.Label>
           <input
+            class="form-control"
+            name="password"
+            placeholder="Password"
+            required="true"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </FormGroup>
 
-        <div className="submit-button-container">
+        <div class="btn btn-lg btn-primary btn-block">
           <Button variant="primary" type="submit">
             Submit
           </Button>

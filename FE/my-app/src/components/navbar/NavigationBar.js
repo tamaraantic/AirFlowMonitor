@@ -235,6 +235,25 @@ function NavigationBar() {
                       </Nav.Link>
                     </NavDropdown.Item>
                   </NavDropdown>
+
+                  <NavDropdown.Divider />
+
+                  <NavDropdown
+                    title="Manage Sensors"
+                    id={`offcanvasNavbarDropdown-expand-${expand}`}
+                    className="nav-dropdown-no-border"
+                  >
+                    <NavDropdown.Item className="nav-dropdown-inner">
+                      <Nav.Link as={Link} to="/sensor/create">
+                        Create Sensor
+                      </Nav.Link>
+                    </NavDropdown.Item>
+                    <NavDropdown.Item className="nav-dropdown-inner">
+                      <Nav.Link as={Link} to="/sensor/view-all">
+                        View Sensor
+                      </Nav.Link>
+                    </NavDropdown.Item>
+                  </NavDropdown>
                 </NavDropdown>
                 <Button variant="outline-warning" size="sm">
                   <Nav.Link className="nav-dropdown-no-border" onClick={LogOut}>

@@ -1,6 +1,7 @@
 package Project.AirFlowMonitor.service;
 
 import Project.AirFlowMonitor.model.Office;
+import Project.AirFlowMonitor.model.SensorName;
 import Project.AirFlowMonitor.model.SensorType;
 import Project.AirFlowMonitor.repository.BuildingRepository;
 import Project.AirFlowMonitor.repository.SensorTypeRepository;
@@ -10,6 +11,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,6 +24,17 @@ public class SensorTypeService {
         List<SensorType> sensorTypes = repo.findAll();
         return sensorTypes;
     }
+    public SensorType findBySensorName(SensorName sensorName){
+        List<SensorType> sensorTypes = repo.findAll();
+        List<SensorType> filteredSensorTypes = new ArrayList<>();
+        for (SensorType sensorType: sensorTypes) {
+            if (sensorType.getName().equals(sensorName)){
+                filteredSensorTypes.add(sensorType);
+            }
+        }
+        return filteredSensorTypes.stream().findFirst().orElse(null);
+    }
+
     @Transactional
     public void deleteSensorType(Long id) {
         repo.deleteById(id);

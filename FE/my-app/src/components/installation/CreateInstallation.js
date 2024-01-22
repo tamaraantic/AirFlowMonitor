@@ -129,6 +129,30 @@ const CreateInstallation = () => {
       }
 
       toast.success("Installation is created!");
+
+      try {
+        const checkResponse = await fetch(
+          "http://localhost:8081/building/create-check",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!checkResponse.ok) {
+          toast.error("Network error. Check request failed!");
+          throw new Error(`HTTP error! Status: ${checkResponse.status}`);
+        }
+
+        // Dodatna logika za rukovanje uspješnim odgovorom na GET zahtjev
+        console.log("Building create-check successful:", checkResponse);
+      } catch (checkError) {
+        console.error("Error checking building:", checkError);
+        toast.error("Error checking building:", checkError);
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
       toast.error("Error fetching data:", error);
@@ -186,15 +210,6 @@ const CreateInstallation = () => {
             value={timeOfInstallation}
             onChange={(e) => setTimeOfInstallation(e.target.value)}
             required
-          />
-        </Form.Group>
-
-        <Form.Group controlId="formDateOfRemoval">
-          <Form.Label>Date of Removal</Form.Label>
-          <Form.Control
-            type="datetime-local"
-            value={dateOfRemoval}
-            onChange={(e) => setDateOfRemoval(e.target.value)}
           />
         </Form.Group>
 

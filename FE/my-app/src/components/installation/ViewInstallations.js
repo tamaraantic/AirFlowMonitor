@@ -17,7 +17,7 @@ const ViewInstallation = () => {
   const [showInstallationModal, setShowInstallationModal] = useState(false);
   const token = getToken();
   const [editedInstallation, setEditedInstallation] = useState({
-    id: "",
+    id: 0,
     dateOfInstallation: "",
     dateOfRemoval: "",
     serialNum: "",
@@ -56,7 +56,7 @@ const ViewInstallation = () => {
 
   const handleDeleteInstallation = async (id) => {
     try {
-      await fetch(`http://localhost:8081/installation/delete/${id}`, {
+      await fetch(`http://localhost:8081/installation/remove/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -106,17 +106,33 @@ const ViewInstallation = () => {
   };
 
   const handleUpdateInstallation = async () => {
+    console.log(editedInstallation);
     const combinedDateTime = `${editedInstallation.dateOfInstallation}T${editedInstallation.timeOfInstallation}`;
+    const dateOfRemoval = editedInstallation.dateOfRemoval;
+    const parsedDateOfRemoval = new Date(dateOfRemoval);
+   const formattedDateString = parsedDateOfRemoval.toLocaleString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
     try {
-      await fetch(`http://localhost:8081/installation/update`, {
+      await fetch("http://localhost:8081/installation/update", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          ...editedInstallation,
+          id: editedInstallation.id,
           dateOfInstallation: combinedDateTime,
+          dateOfRemoval: formattedDateString,
+          serialNum: editedInstallation.serialNum,
+          name: editedInstallation.name,
+          buildingId: editedInstallation.buildingId,
+          officeId: editedInstallation.officeId
         }),
       });
 
@@ -135,7 +151,7 @@ const ViewInstallation = () => {
       setSelectedInstallation(null);
       setIsEditingInstallation(false);
       setEditedInstallation({
-        id: "",
+        id: 0,
         dateOfInstallation: "",
         dateOfRemoval: "",
         serialNum: "",
@@ -178,26 +194,20 @@ const ViewInstallation = () => {
             <tr key={installation.id}>
               <td>{installation.id}</td>
               <td>{formatDateTime(installation.dateOfInstallation)}</td>
-              <td>{installation.dateOfRemoval}</td>
+              <td>{formatDateTime(installation.dateOfRemoval)}</td>
               <td>{installation.serialNum}</td>
               <td>{installation.name}</td>
               <td>{installation.buildingId}</td>
               <td>{installation.officeId}</td>
               <td>
                 <div>
-                  <Button
+                <Button
                     variant="outline-danger"
                     className="mr-2"
                     onClick={() => handleDeleteInstallation(installation.id)}
+                    disabled={installation.dateOfRemoval != null}
                   >
-                    Delete
-                  </Button>
-                  <Button
-                    variant="outline-primary"
-                    className="mr-2"
-                    onClick={() => handleEditInstallation(installation)}
-                  >
-                    Update
+                    Remove Sensor
                   </Button>
                 </div>
               </td>

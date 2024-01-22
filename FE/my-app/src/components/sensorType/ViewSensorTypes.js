@@ -97,6 +97,31 @@ const ViewSensorTypes = () => {
         maximal: "",
         optimal: "",
       });
+      //INFLUX CHECK UPDATE
+      try {
+        const checkResponse = await fetch(
+          "http://localhost:8081/building/create-check",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!checkResponse.ok) {
+          toast.error("Network error. Check request failed!");
+          throw new Error(`HTTP error! Status: ${checkResponse.status}`);
+        }
+
+        // Dodatna logika za rukovanje uspješnim odgovorom na GET zahtjev
+        console.log("Building create-check successful:", checkResponse);
+      } catch (checkError) {
+        console.error("Error checking building:", checkError);
+        toast.error("Error checking building:", checkError);
+      }
+
     } catch (error) {
       toast.error(error);
       console.error("Error updating sensor type:", error);
