@@ -68,6 +68,7 @@ const ViewInstallation = () => {
       toast.success(
         "Successfully deleted installation with serial number " + id + " !"
       );
+      window.location.reload();
     } catch (error) {
       toast.error(error);
       console.error("Error deleting installation:", error);
@@ -110,14 +111,14 @@ const ViewInstallation = () => {
     const combinedDateTime = `${editedInstallation.dateOfInstallation}T${editedInstallation.timeOfInstallation}`;
     const dateOfRemoval = editedInstallation.dateOfRemoval;
     const parsedDateOfRemoval = new Date(dateOfRemoval);
-   const formattedDateString = parsedDateOfRemoval.toLocaleString("en-US", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
+    const formattedDateString = parsedDateOfRemoval.toLocaleString("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    });
     try {
       await fetch("http://localhost:8081/installation/update", {
         method: "PUT",
@@ -132,7 +133,7 @@ const ViewInstallation = () => {
           serialNum: editedInstallation.serialNum,
           name: editedInstallation.name,
           buildingId: editedInstallation.buildingId,
-          officeId: editedInstallation.officeId
+          officeId: editedInstallation.officeId,
         }),
       });
 
@@ -165,21 +166,32 @@ const ViewInstallation = () => {
     }
   };
 
-  const formatDateTime = (dateTimeArray) => {
-    try {
-      const date = new Date(...dateTimeArray);
-      return format(date, "yyyy-MM-dd HH:mm");
-    } catch (error) {
-      return "Invalid Date";
-    }
-  };
+  function formatDateTime(dateTimeArray) {
+    // Dohvati elemente datuma iz niza
+    const [year, month, day, hour, minute] = dateTimeArray;
+
+    // Kreiraj Date objekat
+    const dateObject = new Date(year, month - 1, day, hour, minute);
+
+    // Formatiraj datum u željeni oblik
+    const formattedDate = dateObject.toLocaleString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
+
+    return formattedDate;
+  }
 
   return (
     <div>
+      <h2>Details about installed sensors</h2>
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>ID</th>
             <th>Date of Installation</th>
             <th>Date of Removal</th>
             <th>Serial Number</th>
@@ -192,16 +204,19 @@ const ViewInstallation = () => {
         <tbody>
           {installations.map((installation) => (
             <tr key={installation.id}>
-              <td>{installation.id}</td>
               <td>{formatDateTime(installation.dateOfInstallation)}</td>
-              <td>{formatDateTime(installation.dateOfRemoval)}</td>
+              <td>
+                {installation.dateOfRemoval
+                  ? formatDateTime(installation.dateOfRemoval)
+                  : null}
+              </td>
               <td>{installation.serialNum}</td>
               <td>{installation.name}</td>
               <td>{installation.buildingId}</td>
               <td>{installation.officeId}</td>
               <td>
                 <div>
-                <Button
+                  <Button
                     variant="outline-danger"
                     className="mr-2"
                     onClick={() => handleDeleteInstallation(installation.id)}

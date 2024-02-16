@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="430E9890-D7FC-ADB2-4FE0-92CB197D3EC0" name="buildingv5">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:12:59 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>B20C7E47-F2E5-6B3A-2A53-9B43D2FB0128</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="99F514B6-5131-D76E-6664-9852D864BB96">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>13396E47-EF81-B568-388C-DF1777AE9AE3</importedID>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="address" id="4797692E-6AA9-C25B-4EE5-2456906BF63F">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>4B84BD78-1E46-8610-28CB-28E11B700145</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>78317FB4-D6B4-CB7F-04E5-0BF184D6F7B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="E121F1CD-2DFB-56BC-7CE3-43C8A02E1D6D">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>DEDB45F4-E2CF-2D4C-1372-BB656AC4E4BA</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>78317FB4-D6B4-CB7F-04E5-0BF184D6F7B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BD69DB11-E1F7-7858-B5E0-8B209AA950A0" name="buildingv5_PK">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>22D7DE17-3867-A46D-8842-F69BD8C9762F</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="99F514B6-5131-D76E-6664-9852D864BB96"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

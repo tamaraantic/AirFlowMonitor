@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C8D9C4F1-D732-FBDC-F0A1-171401857121" name="employeev8">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:12:59 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>DFB0D8E4-3C1D-A034-6DC6-5D31269B7946</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="A3BA3C66-4D67-B3DB-2946-340A03CE75C8">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>8D20630C-F2B3-5DE9-3CD0-D00869D22A41</importedID>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="6AA7081D-A0E3-507F-A59A-ACAE34C8CE11">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>2A709CB5-EC5C-5991-5A30-34AECC6C6275</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>78317FB4-D6B4-CB7F-04E5-0BF184D6F7B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="CEADCCA9-0918-C0BC-93E0-2CF11199DAA9">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>29A3AB99-60DB-9F72-2305-CE3DC4EE31E6</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>78317FB4-D6B4-CB7F-04E5-0BF184D6F7B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="password" id="AC31E81B-F053-A4B3-F795-5710C508D0F2">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>9508E073-EC26-40FF-DB5D-9B99563E38B2</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>78317FB4-D6B4-CB7F-04E5-0BF184D6F7B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="role" id="7C6C7D53-D147-6898-62F5-76E8C05FB28B">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>F0CB4F5F-E255-2684-203E-BE183378C116</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>78317FB4-D6B4-CB7F-04E5-0BF184D6F7B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="surname" id="156CCFB0-9D06-A15D-6BCF-2DEDE05257BE">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>BF8E3797-7D18-AF5E-AB6B-468D7F8D163C</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>78317FB4-D6B4-CB7F-04E5-0BF184D6F7B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="office_building_id" id="2DE3FC9A-7E35-F69A-98E3-1416B1B70BFC">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>80FCD721-3EAD-7E50-7491-A2AB8BC73685</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="office_office_id" id="5238D680-56F8-4AD0-0286-92B4BEF75C90">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>AE05F37E-9F2D-ACB3-1E81-C9B95F801368</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>78317FB4-D6B4-CB7F-04E5-0BF184D6F7B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7B11AAE0-56A0-F20B-AB81-3026F43441B0" name="employeev8_PK">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>A5034966-5DA9-B323-D03B-E83E69D815AA</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A3BA3C66-4D67-B3DB-2946-340A03CE75C8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

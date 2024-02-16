@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="93D21454-570E-011C-5781-DB0D9147F165" containerWithKeyObject="62622174-2561-4C64-86B2-6D5D62544BF8" localFKIndex="57A39983-437F-FCAD-4464-122DF2E2FA33" name="FK_installation_office">
+<sourceDDLFile>script.ddl</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:17:39 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>ED357C2E-1C80-76B1-D40F-A2C97E307B7D</importedID>
+<referredTableLongName>Office</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>182C26DC-1285-3AD0-A7B1-D468C948A234</referredTableID>
+<keyObject>9F7D51D1-CB4F-205D-E0A9-0702A84644D8</keyObject>
+<referredKeyID>9F7D51D1-CB4F-205D-E0A9-0702A84644D8</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>building_id,office_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

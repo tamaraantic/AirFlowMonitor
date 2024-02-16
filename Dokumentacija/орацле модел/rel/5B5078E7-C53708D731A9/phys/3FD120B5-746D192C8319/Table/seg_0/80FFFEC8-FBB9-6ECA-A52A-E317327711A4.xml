@@ -1,0 +1,41 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="officev4" directorySegmentName="seg_0" id="80FFFEC8-FBB9-6ECA-A52A-E317327711A4">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="surface" id="633F1945-6B51-9155-1B27-D17A3205639E">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="capacity" id="6D0B9C1B-64A4-B50E-9FEF-CEDAED752D48">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="building_id" id="A6A6F8F7-FE59-2105-7F21-C1D3CA4478B3">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="office_id" id="A8903DDF-5646-419E-0285-EEE6D2212630">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="officev4_PK" id="15E3EE14-0FD6-B8DC-EC91-FA5255DC2DD2">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

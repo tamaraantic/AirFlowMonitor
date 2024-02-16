@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="installationv12" directorySegmentName="seg_0" id="937DB564-A69A-B50E-3935-4A138720E2B8">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:33 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="date_of_installation" id="02716AED-E524-99D1-5AB5-D247D81679C1">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id" id="345C9B2A-8180-0CB6-DB1B-C5E335CEBB03">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="date_of_removal" id="9D4C534E-CD8E-BA26-02F3-971A8056D1DE">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="sensor_id" id="A9902012-18D4-41DB-F0D1-1E9A5566FCE7">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="office_building_id" id="C09C1B84-4EE4-5067-0DC3-FBA15537B618">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="office_office_id" id="D397EE7C-8C83-C2DA-C67F-8880BD60FF51">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="installationv12_PK" id="AFD0D673-F540-0813-06B3-7B110DBC7708">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:34 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4FAB4A62-8405-9894-7BD7-4A187D2E0930" name="installationv6">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>BF183B55-D28A-4FFB-58FB-F6478A8F183E</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="C154C978-520F-ACC8-DAE5-12F51EED8876">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>AEE8C657-AB71-ECF0-ECF2-4C58C205D648</importedID>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_of_installation" id="40D1D642-F3E2-0038-ECFC-E298D9E49E27">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>47EF31C9-7AAE-4026-2D29-C5BD870AA5E0</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<domain>3A29E84C-73B6-676C-5F00-3C3ECB641207</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_of_removal" id="DBBD4123-73E6-CF13-3D54-13BAE70EE961">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>02C2C9D2-FF5B-4FBC-1C43-AC3ADAED73D2</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<domain>3A29E84C-73B6-676C-5F00-3C3ECB641207</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="office_building_id" id="6EB824C1-C89F-46D8-B691-0ECB65B0FAC3">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>86F685D1-1AEA-963A-1327-F1566F84CAC1</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="office_office_id" id="B8DA1A00-1E4C-408C-2137-CDC73A337F59">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>CD0D1113-4AB2-7648-0A70-0DA4E14EC947</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>78317FB4-D6B4-CB7F-04E5-0BF184D6F7B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="sensor_id" id="3279AFDA-4BA8-F407-A693-A7287AC7589E">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>87C49883-DCCF-F5C2-419B-3BBFFD627ADC</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1DC0D0D6-D825-6E03-3337-72664E00CA62" name="installationv6_PK">
+<sourceDDLFile>create.sql</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>B464BBF6-5CB6-9293-D937-BC2A60F9FAAE</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C154C978-520F-ACC8-DAE5-12F51EED8876"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -118,7 +118,8 @@ public class InstallationController {
             influxDBConnection.deleteCheckByName(checkName);
             return ResponseEntity.ok("Installation updated successfully");
         }
-
+        //samo ovu liniju sam dodala
+        influxDBConnection.createOrUpdateCheck();
         return ResponseEntity.ok("Installation updated successfully");
     }
 

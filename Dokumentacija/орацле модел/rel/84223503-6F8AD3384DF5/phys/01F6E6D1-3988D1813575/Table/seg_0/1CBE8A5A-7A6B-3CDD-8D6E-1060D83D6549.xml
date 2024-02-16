@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="sensor_typev9" directorySegmentName="seg_0" id="1CBE8A5A-7A6B-3CDD-8D6E-1060D83D6549">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="name" id="179DAFF8-B371-591C-5F10-E7CA88DA6EAB">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="optimal" id="26D39B6F-600E-B8C4-38DE-7F1F157C5C48">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="minimal" id="72835724-2088-3E83-7DD4-572739B65C6C">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id" id="8FF95CEF-A3C6-D09A-4298-42E2744EE6CF">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="maximal" id="902E7603-A681-C664-866C-7EAD21103315">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="sensor_typev9_PK" id="83F38BBA-5BCE-0D07-8F07-412BCCE28427">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

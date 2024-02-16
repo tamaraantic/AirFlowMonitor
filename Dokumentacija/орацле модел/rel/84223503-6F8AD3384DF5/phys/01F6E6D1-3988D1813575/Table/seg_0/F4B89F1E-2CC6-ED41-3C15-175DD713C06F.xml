@@ -1,0 +1,36 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="sensorv5" directorySegmentName="seg_0" id="F4B89F1E-2CC6-ED41-3C15-175DD713C06F">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="serial_num" id="3B1C53D1-7652-AC08-8757-1AF7D746C476">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id" id="49E5EC7C-D464-046D-7002-B70CEB7E9716">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="sensor_type_id" id="85941C87-653D-1DD8-C738-CE08CAB9B885">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="sensorv5_PK" id="B0AEB0FE-D3FD-4A1B-5206-CCA5795DE32A">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:13:00 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

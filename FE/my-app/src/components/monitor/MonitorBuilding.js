@@ -16,7 +16,7 @@ function MonitorBuilding() {
   const [sensorTypes, setSensorTypes] = useState("");
   const [offices, setOffices] = useState("");
   const grafanaDashboardURL =
-    "http://localhost:3000/d-solo/m08H4XOSz/airflowmonitor-dinamicdashboard?orgId=1&theme=light&panelId=2";
+    "http://localhost:3000/d-solo/m08H4XOSz/airflowmonitor-dinamicdashboard?orgId=1&theme=light&panelId=2&refresh=5s&from=now-1h&to=now";
   useEffect(() => {
     const fetchData = async () => {
       try {

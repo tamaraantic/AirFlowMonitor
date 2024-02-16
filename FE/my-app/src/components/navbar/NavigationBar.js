@@ -75,8 +75,8 @@ function NavigationBar() {
   };
 
   const LogOut = () => {
+    window.location.href = "/";
     sessionStorage.setItem("token", null);
-    window.location.reload();
   };
 
   const filteredOffices = offices.filter((office) =>
@@ -88,14 +88,11 @@ function NavigationBar() {
       <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
         <Container fluid>
           <Navbar.Brand href="#">Air Flow Monitor</Navbar.Brand>
-          <Button
-            variant="danger"
-            className="me-auto"
-            onClick={alertAll}
-            disabled={userRole === "USER"}
-          >
-            ALERT ALL
-          </Button>
+          {userRole !== "USER" && (
+            <Button variant="danger" className="me-auto" onClick={alertAll}>
+              ALERT ALL
+            </Button>
+          )}
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${expand}`}
@@ -157,104 +154,107 @@ function NavigationBar() {
                     ))}
                   </NavDropdown>
                 </NavDropdown>
-                <NavDropdown
-                  title="Administrate"
-                  id={`offcanvasNavbarDropdown-expand-${expand}`}
-                  disabled={userRole.trim() !== "ADMIN"}
-                >
+
+                {userRole === "ADMIN" && (
                   <NavDropdown
-                    title="Manage Offices"
+                    title="Administrate"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
-                    className="nav-dropdown-no-border"
+                    disabled={userRole.trim() !== "ADMIN"}
                   >
-                    <NavDropdown.Item className="nav-dropdown-inner">
-                      <Nav.Link as={Link} to="/office/create">
-                        Create Office
-                      </Nav.Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item className="nav-dropdown-inner">
-                      <Nav.Link as={Link} to="/office/view-all">
-                        View Office
-                      </Nav.Link>
-                    </NavDropdown.Item>
+                    <NavDropdown
+                      title="Manage Offices"
+                      id={`offcanvasNavbarDropdown-expand-${expand}`}
+                      className="nav-dropdown-no-border"
+                    >
+                      <NavDropdown.Item className="nav-dropdown-inner">
+                        <Nav.Link as={Link} to="/office/create">
+                          Create Office
+                        </Nav.Link>
+                      </NavDropdown.Item>
+                      <NavDropdown.Item className="nav-dropdown-inner">
+                        <Nav.Link as={Link} to="/office/view-all">
+                          View Office
+                        </Nav.Link>
+                      </NavDropdown.Item>
+                    </NavDropdown>
+
+                    <NavDropdown.Divider />
+
+                    <NavDropdown
+                      title="Manage Employees"
+                      id={`offcanvasNavbarDropdown-expand-${expand}`}
+                      className="nav-dropdown-no-border"
+                    >
+                      <NavDropdown.Item className="nav-dropdown-inner">
+                        <Nav.Link as={Link} to="/employee/create">
+                          Create Employee
+                        </Nav.Link>
+                      </NavDropdown.Item>
+                      <NavDropdown.Item className="nav-dropdown-inner">
+                        <Nav.Link as={Link} to="/employee/view-all">
+                          View Employees
+                        </Nav.Link>
+                      </NavDropdown.Item>
+                    </NavDropdown>
+
+                    <NavDropdown.Divider />
+
+                    <NavDropdown
+                      title="Manage Sensor Types"
+                      id={`offcanvasNavbarDropdown-expand-${expand}`}
+                      className="nav-dropdown-no-border"
+                    >
+                      <NavDropdown.Item className="nav-dropdown-inner">
+                        <Nav.Link as={Link} to="/sensor-type/create">
+                          Create Sensor Type
+                        </Nav.Link>
+                      </NavDropdown.Item>
+                      <NavDropdown.Item className="nav-dropdown-inner">
+                        <Nav.Link as={Link} to="/sensor-type/view-all">
+                          View Sensor Types
+                        </Nav.Link>
+                      </NavDropdown.Item>
+                    </NavDropdown>
+
+                    <NavDropdown.Divider />
+
+                    <NavDropdown
+                      title="Manage Installations of Sensors"
+                      id={`offcanvasNavbarDropdown-expand-${expand}`}
+                      className="nav-dropdown-no-border"
+                    >
+                      <NavDropdown.Item className="nav-dropdown-inner">
+                        <Nav.Link as={Link} to="/installation/create">
+                          Create Installations
+                        </Nav.Link>
+                      </NavDropdown.Item>
+                      <NavDropdown.Item className="nav-dropdown-inner">
+                        <Nav.Link as={Link} to="/installation/view-all">
+                          View Installations
+                        </Nav.Link>
+                      </NavDropdown.Item>
+                    </NavDropdown>
+
+                    <NavDropdown.Divider />
+
+                    <NavDropdown
+                      title="Manage Sensors"
+                      id={`offcanvasNavbarDropdown-expand-${expand}`}
+                      className="nav-dropdown-no-border"
+                    >
+                      <NavDropdown.Item className="nav-dropdown-inner">
+                        <Nav.Link as={Link} to="/sensor/create">
+                          Create Sensor
+                        </Nav.Link>
+                      </NavDropdown.Item>
+                      <NavDropdown.Item className="nav-dropdown-inner">
+                        <Nav.Link as={Link} to="/sensor/view-all">
+                          View Sensor
+                        </Nav.Link>
+                      </NavDropdown.Item>
+                    </NavDropdown>
                   </NavDropdown>
-
-                  <NavDropdown.Divider />
-
-                  <NavDropdown
-                    title="Manage Employees"
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}
-                    className="nav-dropdown-no-border"
-                  >
-                    <NavDropdown.Item className="nav-dropdown-inner">
-                      <Nav.Link as={Link} to="/employee/create">
-                        Create Employee
-                      </Nav.Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item className="nav-dropdown-inner">
-                      <Nav.Link as={Link} to="/employee/view-all">
-                        View Employees
-                      </Nav.Link>
-                    </NavDropdown.Item>
-                  </NavDropdown>
-
-                  <NavDropdown.Divider />
-
-                  <NavDropdown
-                    title="Manage Sensor Types"
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}
-                    className="nav-dropdown-no-border"
-                  >
-                    <NavDropdown.Item className="nav-dropdown-inner">
-                      <Nav.Link as={Link} to="/sensor-type/create">
-                        Create Sensor Type
-                      </Nav.Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item className="nav-dropdown-inner">
-                      <Nav.Link as={Link} to="/sensor-type/view-all">
-                        View Sensor Types
-                      </Nav.Link>
-                    </NavDropdown.Item>
-                  </NavDropdown>
-
-                  <NavDropdown.Divider />
-
-                  <NavDropdown
-                    title="Manage Installations of Sensors"
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}
-                    className="nav-dropdown-no-border"
-                  >
-                    <NavDropdown.Item className="nav-dropdown-inner">
-                      <Nav.Link as={Link} to="/installation/create">
-                        Create Installations
-                      </Nav.Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item className="nav-dropdown-inner">
-                      <Nav.Link as={Link} to="/installation/view-all">
-                        View Installations
-                      </Nav.Link>
-                    </NavDropdown.Item>
-                  </NavDropdown>
-
-                  <NavDropdown.Divider />
-
-                  <NavDropdown
-                    title="Manage Sensors"
-                    id={`offcanvasNavbarDropdown-expand-${expand}`}
-                    className="nav-dropdown-no-border"
-                  >
-                    <NavDropdown.Item className="nav-dropdown-inner">
-                      <Nav.Link as={Link} to="/sensor/create">
-                        Create Sensor
-                      </Nav.Link>
-                    </NavDropdown.Item>
-                    <NavDropdown.Item className="nav-dropdown-inner">
-                      <Nav.Link as={Link} to="/sensor/view-all">
-                        View Sensor
-                      </Nav.Link>
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                </NavDropdown>
+                )}
                 <Button variant="outline-warning" size="sm">
                   <Nav.Link className="nav-dropdown-no-border" onClick={LogOut}>
                     Log Out

@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5B0825EC-6DF0-28B9-F074-6396EB604F17" name="Sensor">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>D29582B9-97AF-2936-6C3F-C49C0D3BACF2</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="3323C3E4-C13B-9130-51A3-436118A12ED3">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>EEB6A38C-03DC-B49F-09E9-732B0E8D544D</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>EDBC3DF6-08FA-3634-1F52-9A46C8E0B1C5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="serial num" id="1A811772-7F17-4F45-C57B-77A0122039BD">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>F0BFC2CE-C557-EC68-CDBB-6B68F59C2B89</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>EDBC3DF6-08FA-3634-1F52-9A46C8E0B1C5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="sensor type id" id="B6F51807-ADAA-2643-8AA6-AEAE48137BE3">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>AC5ACF11-2769-1C6F-CBB5-A1E1893B66BE</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<referedAttribute>7176D1A5-72BC-ED86-EA6F-B84816537A37</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>EDBC3DF6-08FA-3634-1F52-9A46C8E0B1C5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4ADAFD90-46CB-2459-40BF-15F0EE2FF46D" name="sensor PK">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>1B801304-C5A0-A38B-CB09-6F44BB9CD2AE</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3323C3E4-C13B-9130-51A3-436118A12ED3</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

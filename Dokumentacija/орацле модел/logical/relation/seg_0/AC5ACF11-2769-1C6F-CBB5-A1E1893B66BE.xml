@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FK_sensor_type" directorySegmentName="seg_0" id="AC5ACF11-2769-1C6F-CBB5-A1E1893B66BE">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>F0B26BC7-51BE-E803-2AB9-BD1B97F1E724</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<sourcePk>33F0F90C-6994-9117-1787-9A20CF1DB990</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>50C12B38-6C07-CF8A-4307-4BA355CC7C48</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>5B0825EC-6DF0-28B9-F074-6396EB604F17</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0C27D17F-A3A1-37A1-CA8A-A8907D3618A6" containerWithKeyObject="62622174-2561-4C64-86B2-6D5D62544BF8" localFKIndex="65557D3D-F34B-37DF-3C51-9CDA872C0C7E" name="FK_installation_sensor">
+<sourceDDLFile>script.ddl</sourceDDLFile>
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:17:39 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<importedID>2A95157D-6506-6F22-3A4F-64BE903D66EF</importedID>
+<referredTableLongName>Sensor</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>D29582B9-97AF-2936-6C3F-C49C0D3BACF2</referredTableID>
+<keyObject>1B801304-C5A0-A38B-CB09-6F44BB9CD2AE</keyObject>
+<referredKeyID>1B801304-C5A0-A38B-CB09-6F44BB9CD2AE</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

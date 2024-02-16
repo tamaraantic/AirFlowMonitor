@@ -50,6 +50,7 @@ const ViewOffice = () => {
   }, []);
 
   const handleDeleteOffice = async (id) => {
+    console.log(offices);
     try {
       await fetch(
         `http://localhost:8081/office/delete/${id.buildingId}/${id.officeId}`,
@@ -132,11 +133,12 @@ const ViewOffice = () => {
 
   return (
     <div>
+      <h2>Details about Offices</h2>
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>OfficeId</th>
-            <th>BuildingId</th>
+            <th>Office name</th>
+            <th>Building Id</th>
             <th>Surface</th>
             <th>Capacity</th>
             <th>Action</th>
@@ -182,7 +184,7 @@ const ViewOffice = () => {
               <Row>
                 <Col>
                   <Form.Group controlId="formOfficeID">
-                    <Form.Label>OfficeID:</Form.Label>
+                    <Form.Label>Office name:</Form.Label>
                     <Form.Control
                       type="text"
                       value={editedOffice.id.officeId}
@@ -192,7 +194,7 @@ const ViewOffice = () => {
                 </Col>
                 <Col>
                   <Form.Group controlId="formBuildingID">
-                    <Form.Label>BuildingID:</Form.Label>
+                    <Form.Label>Building Id:</Form.Label>
                     <Form.Control
                       type="text"
                       value={editedOffice.id.buildingId}
@@ -204,7 +206,7 @@ const ViewOffice = () => {
               <Row>
                 <Col>
                   <Form.Group controlId="formSurface">
-                    <Form.Label>Surface:</Form.Label>
+                    <Form.Label>Surface (square meters):</Form.Label>
                     <Form.Control
                       type="text"
                       placeholder={editedOffice.surface}

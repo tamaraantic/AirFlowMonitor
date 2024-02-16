@@ -124,6 +124,7 @@ function MonitorRoom() {
         } else {
           setHumInstallationTime(result);
         }
+        
       } catch (error) {
         console.error("Error fetching data:", error);
       }

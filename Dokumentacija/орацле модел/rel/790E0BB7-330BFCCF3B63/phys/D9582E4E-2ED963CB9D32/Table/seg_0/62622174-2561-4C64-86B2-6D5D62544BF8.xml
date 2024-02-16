@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TableProxyOraclev10g" name="Installation" directorySegmentName="seg_0" id="62622174-2561-4C64-86B2-6D5D62544BF8">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:17:39 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="office_office_id" id="341F7F2B-B6CE-EDC7-5034-92ECFD24CB1F">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:17:39 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="date_of_installation" id="38494002-11AA-58C2-14AE-CA9BA6141E04">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:17:39 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="office_building_id" id="DBCADBCA-C01B-3060-B4D2-7CDAE35C5146">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:17:39 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="sensor_id" id="E7EECE39-CA5A-3E56-F148-CDDDA2D0847D">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:17:39 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="date_of_removal" id="F749DE7E-4555-7EBE-5D25-ABA4B092CF78">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:17:39 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id" id="FFC3A5FB-FBC6-AC5F-1913-2DABF07F83B8">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:17:39 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_installation_office" id="57A39983-437F-FCAD-4464-122DF2E2FA33">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:17:39 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_installation_sensor" id="65557D3D-F34B-37DF-3C51-9CDA872C0C7E">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:17:39 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="installation_PK" id="752104AB-88AA-4F24-2B84-1432A3DB0A48">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:17:39 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev10g>

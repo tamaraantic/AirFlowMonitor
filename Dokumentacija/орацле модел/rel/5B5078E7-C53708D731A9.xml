@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="create" id="5B5078E7-1A13-E61C-74E9-C53708D731A9" mainViewID="50773264-0603-B037-1F62-8264C6721724">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:14:24 UTC</createdTime>
+<ownerDesignName>орацле модел</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>3FD120B5-9F4E-6278-D5E2-746D192C8319</selectedRDBMSSite>
+<importDDLFileStamps>
+<importDDLFileStamp class="oracle.dbtools.crest.imports.DDLFileStamp">
+<fileName>create.sql</fileName>
+<pathName>C:\Users\Korisnik\Desktop\AFM\AirFlowMonitor\BE</pathName>
+<dbType>11</dbType>
+</importDDLFileStamp>
+</importDDLFileStamps>
+</relationalModel>

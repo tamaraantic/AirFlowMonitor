@@ -46,13 +46,13 @@ function App() {
   };
 
   let onMessageReceived = (msg) => {
-    console.log("Poruka je primljena:", msg)
+    console.log("Poruka je primljena:", msg);
     const regex =
-      /checkName=(\w+), temperature, time=(.*), level=(\w+), value=(\d+\.\d+)/;
+      /checkName=(\w+), (temperature|humidity|co), time=(.*), level=(\w+), value=(\d+\.\d+)/;
     const match = msg.message.match(regex);
 
     if (match) {
-      const [, checkName, time, level, rawValue] = match;
+      const [, checkName, sensor, time, level, rawValue] = match;
       const formattedValue = Number(rawValue).toFixed(2);
       const timeInCET = new Date(time);
       const options = {
@@ -66,7 +66,7 @@ function App() {
 
       if (level === "crit") {
         toast.error(
-          `Dangerously high value ${formattedValue} have been recorded in ${checkName}, at ${formattedTime}!`
+          `Dangerously high value ${formattedValue} of ${sensor} have been recorded in ${checkName}, at ${formattedTime}!`
         );
         const notification = `CheckName:${checkName}, FormattedValue: ${formattedValue}, Time: ${formattedTime}, Level: CRITICAL;`;
         setNotifications((prevNotifications) => [
@@ -75,7 +75,7 @@ function App() {
         ]);
       } else if (level === "warn") {
         toast.warn(
-          `Dangerously high value ${formattedValue} have been recorded in ${checkName}, at ${formattedTime}!`
+          `Unusually low value ${formattedValue} have been recorded in ${checkName}, at ${formattedTime}!`
         );
       } else if (level === "ok") {
         toast.info(

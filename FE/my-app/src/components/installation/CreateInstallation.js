@@ -164,6 +164,7 @@ const CreateInstallation = () => {
       <h2>Create new installation</h2>
       <Form className="custom-form" onSubmit={handleSubmit}>
         <Form.Group>
+          <Form.Label>Building</Form.Label>
           <Form.Select
             className="select-light"
             value={selectedBuilding}

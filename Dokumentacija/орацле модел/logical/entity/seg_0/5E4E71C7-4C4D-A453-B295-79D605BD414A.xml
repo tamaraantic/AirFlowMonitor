@@ -1,0 +1,137 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5E4E71C7-4C4D-A453-B295-79D605BD414A" name="Installation">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>62622174-2561-4C64-86B2-6D5D62544BF8</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="8B740090-3920-BDCE-66CC-841546D712A3">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>FFC3A5FB-FBC6-AC5F-1913-2DABF07F83B8</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>EDBC3DF6-08FA-3634-1F52-9A46C8E0B1C5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="date of installation" id="656D50BF-C21A-49FB-219D-D3B666FEC8D6">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>38494002-11AA-58C2-14AE-CA9BA6141E04</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<domain>3A29E84C-73B6-676C-5F00-3C3ECB641207</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="date of removal" id="37A9BE93-0BFD-90B7-3C22-83F204524955">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>F749DE7E-4555-7EBE-5D25-ABA4B092CF78</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<domain>3A29E84C-73B6-676C-5F00-3C3ECB641207</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="office building id" id="A2796F27-D8BE-F86E-3011-5DB914759FFF">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>31109683-A0A3-CCBE-95B8-94E5272A3191</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>CF0B803A-886A-6206-501D-1720A4B65AD5</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>EDBC3DF6-08FA-3634-1F52-9A46C8E0B1C5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="office office id" id="2DDFE261-56DF-2DDC-195E-7B3E92C57C3B">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>31109683-A0A3-CCBE-95B8-94E5272A3191</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>D1571B5C-E078-FFDC-7945-67E4C075BDC7</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<domain>78317FB4-D6B4-CB7F-04E5-0BF184D6F7B3</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="sensor id" id="79454845-2426-29ED-D06D-DB4994ED4194">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>20568C15-A638-EA00-3F1E-1F8E515F7B4F</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>3323C3E4-C13B-9130-51A3-436118A12ED3</referedAttribute>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>EDBC3DF6-08FA-3634-1F52-9A46C8E0B1C5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4AEC5062-80D4-9AB6-6F80-84703E896FC3" name="installation PK">
+<createdBy>Korisnik</createdBy>
+<createdTime>2024-02-06 10:21:42 UTC</createdTime>
+<generatorID>752104AB-88AA-4F24-2B84-1432A3DB0A48</generatorID>
+<ownerDesignName>орацле модел</ownerDesignName>
+<engineerTo>
+<item key="5B5078E7-1A13-E61C-74E9-C53708D731A9" value="true"/>
+<item key="790E0BB7-2A54-2109-6406-330BFCCF3B63" value="true"/>
+<item key="84223503-1C9F-0DE1-9AA1-6F8AD3384DF5" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>8B740090-3920-BDCE-66CC-841546D712A3</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

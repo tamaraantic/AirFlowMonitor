@@ -24,14 +24,12 @@ const CreateOffice = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8081/building/get-all",
-        {
+        const response = await fetch("http://localhost:8081/building/get-all", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
-      );
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -107,7 +105,7 @@ const CreateOffice = () => {
         </Form.Group>
 
         <Form.Group controlId="formArea">
-          <Form.Label>Area</Form.Label>
+          <Form.Label>Surface (square meters)</Form.Label>
           <Form.Control
             type="number"
             placeholder="Enter area"
